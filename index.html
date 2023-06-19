@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>VOKSWAGEN FACTORY</title>
+  <style>
+    body {
+      background-color: #F7F7F7;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      color: #3B6C84;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .buttonContainer {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .buttonContainer button {
+      background-color: #3B6C84;
+      border: none;
+      border-radius: 5px;
+      color: #FFF;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      padding: 10px 20px;
+      margin: 5px;
+    }
+
+    .imageContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .imageItem {
+      margin: 10px;
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .imageItem img {
+      width: 200px;
+      height: 200px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>VOLKSWAGEN FACTORY</h1>
+
+  <div class="buttonContainer">
+    <button onclick="addImage()">Add VW Golf</button>
+    <button onclick="displayImages()">Show VW Golf</button>
+    <button onclick="deleteLastAddedImage()">Delete VW Golf</button>
+  </div>
+
+  <div class="imageContainer" id="imageContainer"></div>
+
+  <script>
+    // JavaScript object to store image entries
+    var imageEntries = [];
+
+    function addImage() {
+      var imageName = "vw";
+      if (imageName) {
+        var imageObject = {
+          name: imageName,
+          extension: "png"
+        };
+        imageEntries.push(imageObject);
+        alert("Golf added successfully!");
+      }
+    }
+
+    function displayImages() {
+      var container = document.getElementById("imageContainer");
+      container.innerHTML = ""; // Clear existing images
+
+      imageEntries.forEach(function(entry) {
+        var imageItem = document.createElement("div");
+        imageItem.className = "imageItem";
+
+        var image = document.createElement("img");
+        image.src = entry.name + "." + entry.extension;
+
+        imageItem.appendChild(image);
+        container.appendChild(imageItem);
+      });
+    }
+
+    function deleteLastAddedImage() {
+      if (imageEntries.length > 0) {
+        imageEntries.pop();
+        alert("Last added image deleted successfully!");
+      }
+    }
+  </script>
+</body>
+</html>
